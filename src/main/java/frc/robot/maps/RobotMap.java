@@ -14,8 +14,16 @@ import com.chopshop166.chopshoplib.outputs.SendableSpeedController;
 import com.chopshop166.chopshoplib.sensors.IEncoder;
 import com.chopshop166.chopshoplib.sensors.MockDigitalInput;
 import com.chopshop166.chopshoplib.sensors.MockEncoder;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class RobotMap {
+
+    public void BAGCurrentLimit(TalonSRX talon) {
+        talon.configContinuousCurrentLimit(10, 0);
+        talon.configPeakCurrentLimit(15, 0);
+        talon.configPeakCurrentDuration(100, 0);
+        talon.enableCurrentLimit(true);
+    }
 
     public DifferentialDriveMap getDriveMap() {
         return new DifferentialDriveMap() {
