@@ -18,6 +18,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class RobotMap {
 
+    // TODO check thes values
     public void BAGCurrentLimit(TalonSRX talon) {
         talon.configContinuousCurrentLimit(10, 0);
         talon.configPeakCurrentLimit(15, 0);

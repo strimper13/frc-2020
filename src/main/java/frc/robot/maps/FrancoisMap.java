@@ -86,7 +86,9 @@ public class FrancoisMap extends RobotMap {
         return new IntakeMap() {
             @Override
             public SendableSpeedController intake() {
-                return SendableSpeedController.wrap(new WPI_TalonSRX(42));
+                final WPI_TalonSRX intakeMotor = new WPI_TalonSRX(42);
+                BAGCurrentLimit(intakeMotor);
+                return SendableSpeedController.wrap(intakeMotor);
             }
 
             @Override
