@@ -14,7 +14,6 @@ import com.chopshop166.chopshoplib.outputs.WSolenoid;
 import com.chopshop166.chopshoplib.sensors.IEncoder;
 import com.chopshop166.chopshoplib.sensors.InvertDigitalInput;
 import com.chopshop166.chopshoplib.sensors.PigeonGyro;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
@@ -23,7 +22,6 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.AnalogTrigger;
 import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.smartdashboard.SendableRegistry;
-import frc.robot.subsystems.ControlPanel;
 
 @RobotMapFor("Francois")
 public class FrancoisMap extends RobotMap {
@@ -87,7 +85,7 @@ public class FrancoisMap extends RobotMap {
             @Override
             public SendableSpeedController intake() {
                 final WPI_TalonSRX intakeMotor = new WPI_TalonSRX(42);
-                BAGCurrentLimit(intakeMotor);
+                setBAGCurrentLimit(intakeMotor);
                 return SendableSpeedController.wrap(intakeMotor);
             }
 
@@ -130,7 +128,7 @@ public class FrancoisMap extends RobotMap {
         return new ControlPanelMap() {
             @Override
             public SendableSpeedController spinner() {
-                BAGCurrentLimit(controlPanel);
+                setBAGCurrentLimit(controlPanel);
                 return SendableSpeedController.wrap(controlPanel);
             }
         };
@@ -147,14 +145,14 @@ public class FrancoisMap extends RobotMap {
             @Override
             public SendableSpeedController pierreMotor() {
                 final WPI_TalonSRX pierreMotor = new WPI_TalonSRX(40);
-                BAGCurrentLimit(pierreMotor);
+                setBAGCurrentLimit(pierreMotor);
                 return SendableSpeedController.wrap(pierreMotor);
             }
 
             public SendableSpeedController singulator() {
                 final WPI_TalonSRX singulator = new WPI_TalonSRX(41);
                 singulator.setInverted(true);
-                BAGCurrentLimit(singulator);
+                setBAGCurrentLimit(singulator);
                 return SendableSpeedController.wrap(singulator);
             }
 
