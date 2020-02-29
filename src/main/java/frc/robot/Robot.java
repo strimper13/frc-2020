@@ -179,7 +179,8 @@ public class Robot extends TimedRobot {
     }
 
     public CommandBase shootAuto() {
-        CommandBase cmd = new SequentialCommandGroup(releaseBalls(3), shooter.spinDown(), drive.driveDistance(20, .5));
+        CommandBase cmd = new SequentialCommandGroup(releaseBalls(3), shooter.spinDown(), drive.driveDistance(48, .5));
+        //value of drive distance SHOULD be inches
         cmd.setName("Shoot Auto");
         return cmd;
     }
